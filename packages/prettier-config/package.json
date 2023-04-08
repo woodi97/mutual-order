@@ -1,0 +1,15 @@
+{
+  "name": "prettier-config",
+  "version": "0.0.1",
+  "main": "./prettier-config.json",
+  "license": "MIT",
+  "scripts": {
+    "publish": "pnpm publish"
+  },
+  "dependencies": {
+    "prettier": "^2.8.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

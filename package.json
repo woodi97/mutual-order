@@ -1,5 +1,5 @@
 {
-  "name": "QueenOrder",
+  "name": "royal-order",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -10,16 +10,17 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish:prettier-config": "pnpm changeset version && pnpm changeset publish"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
+    "@changesets/cli": "^2.26.1",
+    "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "pnpm@8.1.1"
 }

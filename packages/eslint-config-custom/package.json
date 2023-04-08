@@ -7,8 +7,11 @@
     "eslint": "^7.23.0",
     "eslint-config-next": "13.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-turbo": "latest",
     "eslint-plugin-react": "7.31.8",
-    "eslint-config-turbo": "latest"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sonarjs": "^0.19.0"
   },
   "devDependencies": {
     "typescript": "^4.7.4"
