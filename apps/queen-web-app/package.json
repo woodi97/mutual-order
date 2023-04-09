@@ -11,17 +11,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@stackflow/core": "^1.0.4",
+    "@stackflow/plugin-basic-ui": "^1.2.2",
+    "@stackflow/plugin-renderer-basic": "^1.1.1",
+    "@stackflow/react": "^1.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "7.32.0",
     "eslint-config-custom": "workspace:*",
     "prettier-config": "workspace:*",
     "tsconfig": "workspace:*",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react-swc": "^3.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }
