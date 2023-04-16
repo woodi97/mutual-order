@@ -1,5 +1,15 @@
 {
-  "extends": "tsconfig/react-library.json",
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "extends": "../tsconfig/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist/types",
+    "emitDeclarationOnly": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules",
+    ".storybook",
+    "./src/**/*.stories.tsx"
+  ]
 }

@@ -71,3 +71,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+## Tips
+
+1. 만약 ui에서 사용하는 라이브러리(ex. vanilla extract)를 내부의 다른 라이브러리에서 사용한다고 하면, 루트 폴더에도 설치해야 한다. 그렇지 않으면, ui에서 사용하는 라이브러리를 찾을 수 없다는 에러가 발생한다.

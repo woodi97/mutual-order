@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
+    "apis/*",
     "apps/*",
     "packages/*"
   ],
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
+    "@vanilla-extract/esbuild-plugin": "^2.2.2",
+    "@vanilla-extract/vite-plugin": "^3.8.0",
     "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
@@ -22,5 +25,11 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "packageManager": "pnpm@8.1.1"
+  "packageManager": "pnpm@8.1.1",
+  "dependencies": {
+    "@vanilla-extract/css": "^1.11.0",
+    "@vanilla-extract/sprinkles": "^1.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

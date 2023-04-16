@@ -1,6 +1,7 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { useFlow } from "../stackflow";
+import { Button } from "@container101/ui";
 
 const MainActivity: ActivityComponentType = () => {
   const { push } = useFlow();
@@ -12,10 +13,10 @@ const MainActivity: ActivityComponentType = () => {
   };
 
   return (
-    <AppScreen appBar={{ title: "My Activity" }}>
-      <div>
+    <AppScreen>
+      <div className="flex flex-col">
         Main Activity
-        <button onClick={onClick}>Go to article page</button>
+        <Button onClick={onClick}>Go to article page</Button>
       </div>
     </AppScreen>
   );
