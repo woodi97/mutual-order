@@ -8,7 +8,7 @@ type ArticleParams = {
 const Article: ActivityComponentType<ArticleParams> = ({ params }) => {
   const { pop } = useFlow();
 
-  const handleBack = () => {
+  const onClick = () => {
     pop();
   };
 
@@ -16,7 +16,7 @@ const Article: ActivityComponentType<ArticleParams> = ({ params }) => {
     <AppScreen>
       <div className="flex flex-col">
         <h1>{params.title}</h1>
-        <button onClick={handleBack}>Back</button>
+        <button onClick={onClick}>back</button>
       </div>
     </AppScreen>
   );
