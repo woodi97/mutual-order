@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@container101/ui": "workspace:*",
+    "@container101/hooks": "workspace:*",
     "@mobily/ts-belt": "^3.13.1",
     "@stackflow/core": "^1.0.4",
     "@stackflow/plugin-basic-ui": "^1.2.2",

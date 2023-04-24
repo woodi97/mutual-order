@@ -10,6 +10,10 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src"),
       "@container101/ui": resolve(__dirname, "../../packages/ui/index.ts"),
+      "@container101/hooks": resolve(
+        __dirname,
+        "../../packages/hooks/index.ts"
+      ),
     },
   },
 });

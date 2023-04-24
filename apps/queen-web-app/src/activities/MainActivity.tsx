@@ -9,7 +9,7 @@ const MainActivity: ActivityComponentType = () => {
   const { push } = useFlow();
 
   const onClick = () => {
-    push("Article", {
+    push("ArticleActivity", {
       title: "Hello",
     });
   };

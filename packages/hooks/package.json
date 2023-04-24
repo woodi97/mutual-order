@@ -1,18 +1,39 @@
 {
-  "name": "ui",
+  "name": "@container101/hooks",
   "version": "0.0.0",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
-  "license": "MIT",
+  "author": "Container101",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "pnpm build:js && pnpm build:types",
+    "build:js": "vite build",
+    "build:types": "tsc -b",
     "lint": "eslint \"**/*.ts*\""
   },
   "devDependencies": {
-    "@types/react": "^18.0.22",
+    "@types/react": "^18.0.28",
+    "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsconfig": "*",
-    "typescript": "^4.5.2"
-  }
+    "typescript": "^4.5.2",
+    "vite": "^4.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 versions",
+    "not ie <= 11"
+  ]
 }

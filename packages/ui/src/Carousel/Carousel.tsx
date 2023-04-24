@@ -12,11 +12,12 @@ import React, {
   useLayoutEffect,
   useRef,
   useEffect,
+  useCallback,
 } from "react";
 
 import * as styles from "./Carousel.css";
 import cx from "classnames";
-import { motion, useAnimation } from "framer-motion";
+import { PanInfo, motion, useAnimation } from "framer-motion";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   itemsPerPage: number;
@@ -74,28 +75,49 @@ const Content: FunctionComponent<{
     [numOfItems, itemsPerPage]
   );
 
-  const paginate = (newDirection: number) => {
-    let nextPageIndex: number;
-    let nextPage = selectedPage + newDirection;
-    if (enableInfinite) {
-      nextPage %= numOfItems;
-      nextPageIndex = nextPage < 0 ? numOfItems - 1 : nextPage;
-    } else {
-      nextPage = nextPage > numOfItems - 1 ? numOfItems - 1 : nextPage;
-      nextPageIndex = nextPage < 0 ? 0 : nextPage;
-    }
-    setSelectedPage(nextPageIndex);
-  };
-
   const controls = useAnimation();
   const swipeConfidenceThreshold = useMemo(() => 10000, []);
   const sliderItemnRefs = useRef<HTMLDivElement[]>([]);
   const [selectedPage, setSelectedPage] = useState(0);
 
+  // Think: selectedPage changes when every user slider, do we need?
+  const paginate = useCallback(
+    (newDirection: number) => {
+      let nextPageIndex: number;
+      let nextPage = selectedPage + newDirection;
+      if (enableInfinite) {
+        nextPage %= numOfItems;
+        nextPageIndex = nextPage < 0 ? numOfItems - 1 : nextPage;
+      } else {
+        nextPage = nextPage > numOfItems - 1 ? numOfItems - 1 : nextPage;
+        nextPageIndex = nextPage < 0 ? 0 : nextPage;
+      }
+      setSelectedPage(nextPageIndex);
+    },
+    [selectedPage, numOfItems, enableInfinite]
+  );
+
+  const onDragEnd = useCallback(
+    (
+      event: MouseEvent | TouchEvent | PointerEvent,
+      { offset, velocity }: PanInfo
+    ) => {
+      const swipe = swipePower(offset.x, velocity.x);
+      if (swipe < -swipeConfidenceThreshold) {
+        paginate(1);
+      } else if (swipe > swipeConfidenceThreshold) {
+        paginate(-1);
+      }
+    },
+    [paginate]
+  );
+
+  // assign calculated num of pages to context
   useLayoutEffect(() => {
     setNumOfPages?.(numOfPages);
   }, []);
 
+  // run next animation when selectedPage changed
   useEffect(() => {
     controls.start("next");
   }, [controls, selectedPage]);
@@ -117,14 +139,7 @@ const Content: FunctionComponent<{
         }}
         dragElastic={0.5}
         dragMomentum={false}
-        onDragEnd={(_, { offset, velocity }) => {
-          const swipe = swipePower(offset.x, velocity.x);
-          if (swipe < -swipeConfidenceThreshold) {
-            paginate(1);
-          } else if (swipe > swipeConfidenceThreshold) {
-            paginate(-1);
-          }
-        }}
+        onDragEnd={onDragEnd}
         className={styles.carouselDrag}
       >
         {numOfItems > 0 &&
@@ -134,12 +149,9 @@ const Content: FunctionComponent<{
               ref={(el) => {
                 if (el) sliderItemnRefs.current[idx] = el;
               }}
-              initial={{ opacity: 0 }}
               animate={{
-                opacity: 1,
                 scale: selectedPage === idx ? 1 : 0.9,
               }}
-              exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               className={cx(styles.carouselItem)}
             >
@@ -153,7 +165,7 @@ const Content: FunctionComponent<{
 
 const Indicator: FunctionComponent<{
   classname?: string;
-}> = ({}) => {
+}> = ({ classname }) => {
   const id = useId();
   const { numOfPages } = useCarouselContext();
 
@@ -161,10 +173,10 @@ const Indicator: FunctionComponent<{
     <div className={styles.indicatorRoot}>
       {Array(numOfPages)
         .fill(0)
-        .map((_, idx) => (
+        .map((_, index) => (
           <span
-            key={`${id}-ca-indi-${idx}`}
-            className={cx(styles.indicatorStyle)}
+            key={`${id}-${index}`}
+            className={cx(styles.indicatorStyle, classname)}
           />
         ))}
     </div>
