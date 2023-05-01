@@ -9,23 +9,19 @@ import React, {
   useMemo,
   Dispatch,
   SetStateAction,
-  useLayoutEffect,
   useRef,
   useEffect,
   useCallback,
+  ForwardRefExoticComponent,
 } from "react";
 
 import * as styles from "./Carousel.css";
 import cx from "classnames";
 import { PanInfo, motion, useAnimation } from "framer-motion";
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface CarouselProps extends React.ComponentPropsWithRef<"div"> {
   itemsPerPage: number;
 }
-
-export type CarouselProps = React.ForwardRefExoticComponent<
-  Props & React.RefAttributes<HTMLDivElement>
->;
 
 const CarouselContext = createContext<{
   itemsPerPage: number;
@@ -38,28 +34,31 @@ const CarouselContext = createContext<{
 
 const useCarouselContext = () => useContext(CarouselContext);
 
-const CarouselRoot: CarouselProps = forwardRef((props, ref) => {
-  const { itemsPerPage, children, className, ...restProps } = props;
-  const [numOfPages, setNumOfPages] = useState<number | null>(null);
+const CarouselRoot: ForwardRefExoticComponent<CarouselProps> = forwardRef(
+  (props, ref) => {
+    const { itemsPerPage, children, className, ...restProps } = props;
+    const [numOfPages, setNumOfPages] = useState<number | null>(null);
 
-  return (
-    <CarouselContext.Provider
-      value={{
-        itemsPerPage,
-        numOfPages,
-        setNumOfPages,
-      }}
-    >
-      <div
-        ref={ref}
-        className={cx(styles.carouselRoot, className)}
-        {...restProps}
+    return (
+      <CarouselContext.Provider
+        value={{
+          itemsPerPage,
+          numOfPages,
+          setNumOfPages,
+        }}
       >
-        {children}
-      </div>
-    </CarouselContext.Provider>
-  );
-});
+        <div
+          ref={ref}
+          className={cx(styles.carouselRoot, className)}
+          {...restProps}
+        >
+          {children}
+        </div>
+      </CarouselContext.Provider>
+    );
+  }
+);
+CarouselRoot.displayName = "CarouselRoot";
 
 export const swipePower = (offset: number, velocity: number) =>
   Math.abs(offset) * velocity;
@@ -109,11 +108,11 @@ const Content: FunctionComponent<{
         paginate(-1);
       }
     },
-    [paginate]
+    [paginate, swipeConfidenceThreshold]
   );
 
   // assign calculated num of pages to context
-  useLayoutEffect(() => {
+  useEffect(() => {
     setNumOfPages?.(numOfPages);
   }, []);
 

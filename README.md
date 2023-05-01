@@ -1,10 +1,18 @@
 # Turborepo starter
 
-This is an official pnpm starter turborepo.
+This is an official starter Turborepo.
+
+## Using this example
+
+Run the following command:
+
+```sh
+npx create-turbo@latest
+```
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io) as a package manager. It includes the following packages/apps:
+This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
@@ -18,7 +26,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This turborepo has some additional tools already setup for you:
+This Turborepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
@@ -30,7 +38,7 @@ To build all apps and packages, run the following command:
 
 ```
 cd my-turborepo
-pnpm run build
+pnpm build
 ```
 
 ### Develop
@@ -39,7 +47,7 @@ To develop all apps and packages, run the following command:
 
 ```
 cd my-turborepo
-pnpm run dev
+pnpm dev
 ```
 
 ### Remote Caching
@@ -50,15 +58,15 @@ By default, Turborepo will cache locally. To enable Remote Caching you will need
 
 ```
 cd my-turborepo
-pnpm dlx turbo login
+npx turbo login
 ```
 
 This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
 ```
-pnpm dlx turbo link
+npx turbo link
 ```
 
 ## Useful Links
@@ -71,7 +79,3 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
-
-## Tips
-
-1. 만약 ui에서 사용하는 라이브러리(ex. vanilla extract)를 내부의 다른 라이브러리에서 사용한다고 하면, 루트 폴더에도 설치해야 한다. 그렇지 않으면, ui에서 사용하는 라이브러리를 찾을 수 없다는 에러가 발생한다.

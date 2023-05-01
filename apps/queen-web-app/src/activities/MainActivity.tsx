@@ -1,7 +1,7 @@
 import { ActivityComponentType } from "@stackflow/react";
 import { AppScreen } from "@stackflow/plugin-basic-ui";
 import { useFlow } from "../stackflow";
-import { Button, Carousel } from "@container101/ui";
+import { Carousel } from "@container101/ui";
 
 // Tip: Initial Activity Should Not Have Params
 const MainActivity: ActivityComponentType = () => {
@@ -17,7 +17,7 @@ const MainActivity: ActivityComponentType = () => {
   return (
     <AppScreen>
       <div className="flex flex-col">
-        <Button onClick={onClick}>Go to article page</Button>
+        <button onClick={onClick}>Go to article page</button>
         <Carousel.Root itemsPerPage={1}>
           <Carousel.Content>
             {Array(10)

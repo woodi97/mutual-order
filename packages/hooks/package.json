@@ -2,38 +2,22 @@
   "name": "@container101/hooks",
   "version": "0.0.0",
   "author": "Container101",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "./index.tsx",
+  "types": "./index.tsx",
   "scripts": {
-    "build": "pnpm build:js && pnpm build:types",
-    "build:js": "vite build",
-    "build:types": "tsc -b",
-    "lint": "eslint \"**/*.ts*\""
+    "lint": "eslint \"**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@vitejs/plugin-react-swc": "^3.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsconfig": "*",
-    "typescript": "^4.5.2",
-    "vite": "^4.2.0"
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.2"
   },
-  "browserslist": [
-    "> 1%",
-    "last 3 versions",
-    "not ie <= 11"
-  ]
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }

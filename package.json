@@ -1,35 +1,29 @@
 {
-  "name": "royal-order",
-  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apis/*",
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish:prettier-config": "pnpm changeset version && pnpm changeset publish"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.1",
-    "@vanilla-extract/esbuild-plugin": "^2.2.2",
+    "@vanilla-extract/css": "^1.11.0",
+    "@vanilla-extract/dynamic": "^2.0.3",
+    "@vanilla-extract/next-plugin": "^2.1.2",
+    "@vanilla-extract/recipes": "^0.4.0",
+    "@vanilla-extract/sprinkles": "^1.6.0",
     "@vanilla-extract/vite-plugin": "^3.8.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^7.32.0",
     "eslint-config-custom": "workspace:*",
-    "prettier": "latest",
+    "prettier": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.2.8",
     "turbo": "latest"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "packageManager": "pnpm@8.1.1",
+  "packageManager": "pnpm@7.15.0",
+  "name": "royal-order",
   "dependencies": {
-    "@vanilla-extract/css": "^1.11.0",
-    "@vanilla-extract/sprinkles": "^1.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "classnames": "^2.3.2",
+    "framer-motion": "^10.12.5"
   }
 }

@@ -30,7 +30,7 @@ const ArticleActivity: ActivityComponentType<ArticleActivityParams> = ({
         <div>
           {isModalOpen ? (
             <div ref={ref}>
-              👋 Hey, I'm a modal. Click anywhere outside of me to close.
+              👋 Hey, Im a modal. Click anywhere outside of me to close.
             </div>
           ) : (
             <button onClick={() => setModalOpen(true)}>Open Modal</button>

@@ -1,18 +1,16 @@
 {
-  "name": "@container101/queen-web-app",
+  "name": "queen-web-app",
   "private": true,
   "version": "0.0.0",
-  "prettier": "prettier-config",
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint"
+    "build": "vite build",
+    "lint": "tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
     "@container101/ui": "workspace:*",
     "@container101/hooks": "workspace:*",
-    "@mobily/ts-belt": "^3.13.1",
     "@stackflow/core": "^1.0.4",
     "@stackflow/plugin-basic-ui": "^1.2.2",
     "@stackflow/plugin-renderer-basic": "^1.1.1",
@@ -24,12 +22,9 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.0.0",
-    "autoprefixer": "^10.4.14",
     "eslint": "7.32.0",
     "eslint-config-custom": "workspace:*",
-    "postcss": "^8.4.22",
-    "prettier-config": "workspace:*",
-    "tailwindcss": "^3.3.1",
+    "tailwind-config": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
